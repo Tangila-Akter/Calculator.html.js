@@ -1,0 +1,305 @@
+﻿
+@{
+    ViewBag.Title = "cal";
+    Layout = "~/Views/Shared/_LayoutPageCal.cshtml";
+}
+
+<h1> Calculator Program in JavaScript </h1>
+<div class="container">
+
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id="display" class="display"></div>
+        </div>
+        <div class="col-md-3">
+            <button id="btn_one" class="btn btn-info btn-block btn-key">1</button>
+        </div>
+        <div class="col-md-3">
+            <button id="btn_two" class="btn btn-info btn-block btn-key">2</button>
+        </div>
+        <div class="col-md-3">
+            <button id="btn_three" class="btn btn-info btn-block btn-key">3</button>
+        </div>
+        <div class="col-md-3">
+            <button id="btn_sum" class="btn btn-info btn-block btn-key">+</button>
+        </div>
+        <div class="col-md-3">
+            <button id="btn_four" class="btn btn-info btn-block btn-key ">4</button>
+        </div>
+        <div class="col-md-3">
+            <button id="btn_five" class="btn btn-info btn-block btn-key">5</button>
+        </div>
+        <div class="col-md-3">
+            <button id="btn_six" class="btn btn-info btn-block btn-key">6</button>
+        </div>
+        <div class="col-md-3">
+            <button id="btn_min" class="btn btn-info btn-block btn-key ">-</button>
+        </div>
+
+        <div class="col-md-3">
+            <button id="btn_seven" class="btn btn-info btn-block btn-key ">7</button>
+        </div>
+        <div class="col-md-3">
+            <button id="btn_eight" class="btn btn-info btn-block btn-key">8</button>
+        </div>
+        <div class="col-md-3">
+            <button id="btn_nine" class="btn btn-info btn-block btn-key">9</button>
+        </div>
+        <div class="col-md-3">
+            <button id="btn_multiple" class="btn btn-info btn-block btn-key ">*</button>
+        </div>
+        <div class="col-md-3">
+            <button id="btn_zero" class="btn btn-info btn-block btn-key">0</button>
+        </div>
+        <div class="col-md-3">
+            <button id="btn_delete" class="btn btn-info btn-block btn-key">&#8592;</button>
+        </div>
+        <div class="col-md-3">
+            <button id="btn_slash" class="btn btn-info btn-block btn-key">/</button>
+        </div>
+        <div class="col-md-3">
+            <button id="btn_clear" class="btn btn-info btn-block btn-key">C</button>
+        </div>
+        <div class="col-md-12">
+            <button id="btn_equal" class="btn btn-info btn-block btn-key">=</button>
+        </div>
+        <script type="text/javascript">
+            var cal = new Object();
+            cal.left = '';
+            cal.operator = '';
+            cal.right = '';
+            $(document).ready(function () {
+                //debugger;
+                //alert('ok');
+                $('#btn_login').on('click', function () {
+
+                    var username = $('#txt_username').val();
+                    var password = $('#txt_password').val();
+
+                    if (username == '') {
+                        alert('Please enter your username');
+                    }
+
+                    alert(username + ";" + password);
+
+                    var abc = "Bangladesh";
+
+                    $('#txt_username').val(abc);
+                });
+
+                $('#btn_click_here').on('click', function () {
+
+                    //var user = new Object();
+                    //user.username = $('#txt_username').val();
+                    //user.password = $('#txt_password').val();
+                    //user.emp = new Object();
+                    //user.emp.emp_name = "Mamun";
+                    debugger;
+
+                });
+                $('#btn_zero').on('click', function () {
+                    check('0');
+                    //var e = $('#display').html();
+                    //$('#display').html(e+'0');
+                });
+                $('#btn_sum').on('click', function () {
+                    check('+');
+                    //var e = $('#display').html();
+                    //$('#display').html(e + '+');
+                });
+                $('#btn_min').on('click', function () {
+                    check('-');
+                    //var e = $('#display').html();
+                    //$('#display').html(e + '-');
+                });
+                $('#btn_multiple').on('click', function () {
+                    check('*');
+                    //var e = $('#display').html();
+                    //$('#display').html(e + '*');
+                });
+                $('#btn_one').on('click', function () {
+                    check('1');
+                    //var e = $('#display').html();
+                    //$('#display').html(e+'1');
+                });
+                $('#btn_two').on('click', function () {
+                    check('2');
+                });
+                $('#btn_three').on('click', function () {
+                    check('3');
+                    //var e = $('#display').html();
+                    //$('#display').html(e + '3');
+                });
+                $('#btn_four').on('click', function () {
+                    check('4');
+                    //var e = $('#display').html();
+                    //$('#display').html(e + '4');
+                });
+                $('#btn_five').on('click', function () {
+                    check('5');
+                    //var e = $('#display').html();
+                    //$('#display').html(e + '5');
+                });
+                $('#btn_six').on('click', function () {
+                    check('6');
+                    //var e = $('#display').html();
+                    //$('#display').html(e + '6');
+                });
+                $('#btn_seven').on('click', function () {
+                    check('7');
+                    //var e = $('#display').html();
+                    //$('#display').html(e + '7');
+                });
+                $('#btn_eight').on('click', function () {
+                    check('8');
+                    //var e = $('#display').html();
+                    //$('#display').html(e + '8');
+                });
+                $('#btn_nine').on('click', function () {
+                    check('9');
+                    //var e = $('#display').html();
+                    //$('#display').html(e + '9');
+                });
+                $('#btn_equal').on('click', function () {
+                    check('=');
+                    //var e = $('#display').html();
+                    //$('#display').html(e + '=');
+                });
+                $('#btn_slash').on('click', function () {
+                    check('/');
+                    //var e = $('#display').html();
+                    //$('#display').html(e + '/');
+                });
+                $('#btn_delete').on('click', function () {
+                    if (cal.right != '') {
+                        debugger;
+                        var right = cal.right;
+                        right = right.slice(0, -1);
+                        if (right == '' || right.lenght == 0) {
+                            cal.right = '';
+                        }
+                        else {
+                            cal.right = right;
+                        }
+                    }
+                    else if (cal.right == '' && cal.operator != '') {
+                        debugger;
+                        cal.operator = '';
+
+                    }
+
+                    else if (cal.right == '' && cal.operator == '' && cal.left != '') {
+                        debugger;
+                        var left = cal.left;
+                        left = left.slice(0, -1);
+                        if (left.lenght == 0) {
+                            cal.left = '';
+                        }
+                        else {
+                            cal.left = left;
+                        }
+                    }
+                    $('#display').html(cal.left + cal.operator + cal.right);
+                });
+                $('#btn_clear').on('click', function () {
+                    cal.left = '';
+                    cal.operator = '';
+                    cal.right = '';
+                    $('#display').html('');
+                });
+            });
+
+            function check(num) {
+                debugger;
+                switch (num) {
+                    case '+':
+                        if (cal.operator != '') {
+                            var val = calculation();
+                            cal.left = val;
+                            cal.operator = '+';
+                            cal.right = '';
+                        }
+                        else {
+                            cal.operator = '+';
+                        }
+                        break;
+                    case '-':
+                        if (cal.operator != '') {
+                            var val = calculation();
+                            cal.left = val;
+                            cal.operator = '-';
+                            cal.right = '';
+                        }
+                        else {
+                            cal.operator = '-';
+                        }
+                        break;
+                    case '*':
+                        if (cal.operator != '') {
+                            var val = calculation();
+                            cal.left = val;
+                            cal.operator = '*';
+                            cal.right = '';
+                        }
+                        else {
+                            cal.operator = '*';
+                        }
+                        break;
+                    case '/':
+                        if (cal.operator != '') {
+                            var val = calculation();
+                            cal.left = val;
+                            cal.operator = '/';
+                            cal.right = '';
+                        }
+                        else {
+                            cal.operator = '/';
+                        }
+                        break;
+                    case '=':
+                        if (cal.left != '' && cal.operator != '' && cal.right != '') {
+                            var val = calculation();
+                            cal.left = val;
+                            cal.operator = '';
+                            cal.right = '';
+                        }
+                        break;
+
+                    default:
+                        if (cal.operator == '') {
+                            cal.left = cal.left + num;
+                        }
+                        else {
+                            cal.right = cal.right + num;
+                        }
+                        break;
+
+                }
+                $('#display').html(cal.left + cal.operator + cal.right);
+
+            };
+            function calculation() {
+                switch (cal.operator) {
+                    case '+':
+                        return Number(cal.left) + Number(cal.right);
+                        break;
+                    case '-':
+                        return Number(cal.left) - Number(cal.right);
+                        break;
+                    case '*':
+                        return Number(cal.left) * Number(cal.right);
+                        break;
+                    case '/':
+                        return Number(cal.left) / Number(cal.right);
+                        break;
+                    default:
+
+                        break;
+                }
+            };
+        </script>
+
+    </div>
+</div>

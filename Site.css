@@ -1,0 +1,13 @@
+﻿
+.container {
+    width: 400px;
+    min-height: 400px;
+    background: #FFF;
+    box-shadow: 0 0 5px rgb(0 0 0 / 30%);
+    padding: 71px 30px;
+    margin-top: 255px;
+}
+.a1 {
+    text-align: center;
+    display:block;
+}
